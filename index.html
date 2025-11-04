@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Aesthetic Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -17,72 +18,109 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #f0f0f0;
+            background: linear-gradient(45deg, #8e2de2, #4a00e0);
         }
 
         .calculator {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 350px;
         }
 
         .display {
-            background: #eee;
-            padding: 10px;
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
             text-align: right;
-            font-size: 24px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+            font-size: 36px;
+            font-weight: 300;
+            color: #fff;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
         button {
-            padding: 15px;
-            font-size: 18px;
+            padding: 20px;
+            font-size: 20px;
             border: none;
-            background: #e0e0e0;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         button:hover {
-            background: #d0d0d0;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .operator {
-            background: #f8a51d;
-            color: white;
+            background: rgba(248, 165, 29, 0.2);
+            font-weight: bold;
         }
 
         .operator:hover {
-            background: #e59617;
+            background: rgba(248, 165, 29, 0.3);
         }
 
         .equals {
-            background: #4CAF50;
-            color: white;
+            background: rgba(76, 175, 80, 0.2);
+            font-weight: bold;
         }
 
         .equals:hover {
-            background: #45a049;
+            background: rgba(76, 175, 80, 0.3);
         }
 
         .clear {
-            background: #ff4444;
-            color: white;
+            background: rgba(255, 68, 68, 0.2);
+            font-weight: bold;
         }
 
         .clear:hover {
-            background: #ff3333;
+            background: rgba(255, 68, 68, 0.3);
+        }
+
+        /* Added styles for calculator title */
+        .calculator::before {
+            content: 'Calculator';
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Style for backspace button */
+        .backspace {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -112,7 +150,7 @@
             
             <button onclick="appendNumber('0')">0</button>
             <button onclick="appendNumber('.')">.</button>
-            <button onclick="backspace()">⌫</button>
+            <button class="backspace" onclick="backspace()"><i class="fas fa-backspace"></i></button>
             <button class="equals" onclick="calculate()">=</button>
         </div>
     </div>
